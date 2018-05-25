@@ -1,0 +1,103 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+
+<html>
+<head>
+	{% block title %}{% endblock %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	{% block link %}
+	{% endblock %}
+	<link href="http://allfont.ru/allfont.css?fonts=b52" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet"> 
+	<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+<div class="wrapper" id="wrapper">
+	<header id="header">
+		<div class="container-fluid">
+			<nav class="navbar navbar-inverse row" role="navigation">
+				<div class="container-fluid" id="header-content">
+					<div class="navbar-header">
+			      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+			      		</button>
+			      		<a class="navbar-brand" href="{% url 'index' %}"><span id="brand-text">Белая Ночь</span></a>
+			    	</div>
+				</div>
+
+				<div class="row navigate colapse navbar-collapse"
+				  id="bs-example-navbar-collapse-1"> 
+					<div class="col-sm-2 col-sm-offset-3 header-text nav-text">
+						<a href="{% url 'index' %}">Главная</a></div>
+					<div class="col-sm-2 header-text nav-text">
+						<a href="{% url 'catalog' %}">Список товаров</a></div>
+					<div class="col-sm-2 header-text nav-text">
+						<a href="{% url 'contacts' %}">Контакты</a>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	<div class="container-fluid all-content-bg">
+		<div class="container all-content">
+			<div class="row content-text" id="wrapper_child_content">
+					
+						{% block name_page %}
+						{% endblock %}
+<!-- CONTENT -->
+			
+			{% block content %}
+			{% endblock %}
+
+			{% block hid %}
+			{% endblock %}
+
+<!-- END CONTENT -->
+				<!-- </div> -->
+<!-- end .row -->
+			</div>
+<!-- end .container -->
+		</div>	
+<!-- end .container-fluid -->
+	</div>
+
+
+<!-- FOOTER -->
+<div class="footer-bg">
+	<div class="container" id="all-all-footer">
+		<div class="all-footer row" id="footer">
+			<a href="{% url 'index' %}">
+				<img src="{% static 'img/logo.png' %}" id="footer-logo">
+			</a>
+			<div class="contacts">
+				<div class="contacts-data">
+					<ul>
+						<li>+78005553535</li>
+						<li>aleksedima@mail.ru</li>
+					</ul>
+				</div>
+
+				<div class="vk"> 
+					<a href="https://vk.com/white_night_chinchilla" id="a-vk" target="_blank"><span class="vk-text">Мы в Вк:</span>
+					<img src="http://www.iconarchive.com/download/i82976/limav/flat-gradient-social/Vk.ico" id="logo-vk"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	{% block script %}
+	{% endblock %}
+	<script src="{% static 'js/common.js' %}"></script>
+</body>
+</html>
+

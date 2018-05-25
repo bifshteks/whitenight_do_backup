@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+	<title>Контакты</title>
+{% endblock %}
+
+
+{% block link %}
+	<link rel="stylesheet" href="{% static 'css/contacts.css' %}">
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css" >
+{% endblock %}
+
+{% block name_page %}
+	<h2 id="title">Контакты</h2>
+{% endblock %}
+			
+<!-- CONTENT -->
+
+{% block content %}
+	Сделать заказ или получить подробную информацию Вы можете по телефону 
+	<span class="contacts-inline-data contants-our-phone"> +7 800 555 35 35</span><br>
+	<ul>
+		<li>По будням: с 9<sup>00</sup> до 20<sup>00</sup></li>
+		<li>По выходным: с 12<sup>00</sup> до 18<sup>00</sup></li>
+	</ul><br>
+
+		Также Вы можете заполнить форму обратной связи и мы обязательно перезвоним Вам в удобное для Вас время.
+	<div class="cont-fb-btn">
+		<div class="btn fb-btn">
+			<a href="#buy-item" id="feedback" class="popup">Обратная связь</a>
+		</div>
+	</div>
+		
+
+	<div class="our-adress" id="y-map">
+		<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;width=500&amp;height=314&amp;lang=ru_RU&amp;scroll=true"></script>
+	</div>
+
+
+
+{% if need_show_popup %}
+
+
+
+<div class="success-bg">
+	<div class="success-message">
+		<div class="icon-ok">
+			<div class="glyphicon glyphicon-ok-circle"></div>
+		</div>
+		<div class="message">
+			Ваша заявка успешно отправлена! Мы обязательно перезвоним в указанное время!
+		</div>
+		<div class="exit-popup">
+			<button id="close-btn"><span class="glyphicon glyphicon-remove"></span></button>
+		</div>
+	</div>
+</div>
+
+		{% endif %}
+
+{% endblock %}
+
+
+{% block hid %}
+
+	<!-- PopUp window -->
+<div class="hidden" >
+
+	<form id="buy-item" method="post" action="">
+		{% csrf_token %}
+		{{ form.name }}<br>
+
+					
+		{{ form.phone }}<br>
+		<p class="external_text">Когда Вам удобно принять звонок:</p>
+		<div class="input_set">
+			<div class="input_date">
+				<div class="input_text">
+					<p>Дата</p>
+				</div>
+				{{ form.date }}
+			</div>
+		
+			<div class="input_time">
+				<div class="input_text">
+					<p>Время</p>
+				</div>
+
+				<span class="white">c&nbsp</span>
+				{{ form.time_from }}
+
+				<span class="white">&nbsp до&nbsp</span>
+				{{ form.time_to }}
+			</div>
+		</div>
+					
+					
+		<input type="submit" class="send" value="Заказать звонок"/>
+	</form>
+</div>
+	<!-- End PopUp -->
+{% endblock %}
+
+
+{% block script %}
+<script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot' %}"></script>
+<script src="{% static 'js/jquery.maskedinput.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+
+<script>
+	$(function(){
+
+		var width = document.body.clientWidth;
+		if (width < 300) {
+			document.getElementById("y-map").innerHTML = '<a href="https://yandex.ru/maps/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;source=constructorStatic" target="_blank"><img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;width=200&amp;height=185&amp;lang=ru_RU" alt="" style="border: 0;" /></a>';
+		} else if (width < 400) {
+			document.getElementById("y-map").innerHTML = '<a href="https://yandex.ru/maps/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;source=constructorStatic" target="_blank"><img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;width=240&amp;height=185&amp;lang=ru_RU" alt="" style="border: 0;" /></a>';
+		} else if (width < 615) {
+			document.getElementById("y-map").innerHTML = '<a href="https://yandex.ru/maps/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;source=constructorStatic" target="_blank"><img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;width=294&amp;height=185&amp;lang=ru_RU" alt="" style="border: 0;" /></a>'
+		 }; 
+
+
+
+
+
+
+});
+</script>
+<script src="http://whitenight.info/static/js/jquery.maskedinput.min.js"></script>
+<script>
+
+$(function(){
+  $("#phone").mask("8(999) 999-99-99");
+});
+</script>
+<script>
+	$(function(){
+		// alert('pre if');
+		if ($("div").is(".success-bg")) {
+			// alert('if');
+			$("#close-btn").click(function(){
+				// alert('pre');
+				$("div.success-bg").css('display', 'none');
+				// alert('post');
+			});
+		};
+		// alert('test');
+	});
+</script>
+
+{% endblock %}
+<!-- </div>
+</body>
+</html>

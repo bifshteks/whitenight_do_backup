@@ -1,0 +1,243 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>Test my</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="http://whitenight.info/static/css/main.css">
+	<link rel="stylesheet" href="http://whitenight.info/static/css/contacts.css">
+	<link rel="stylesheet" href="http://whitenight.info/static/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="http://whitenight.info/static/css/magnific-popup.css">
+	<link href="http://allfont.ru/allfont.css?fonts=b52" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet"> 
+	<link rel="shortcut icon" href="http://whitenight.info/static/img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<div class="wrapper">
+	<header>
+		<div class="container-fluid">
+			<nav class="navbar navbar-inverse row" role="navigation">
+				<div class="container-fluid" id="header-content">
+					<div class="navbar-header">
+			      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+			      		</button>
+			      		<a class="navbar-brand" href="http://whitenight.info/"><span id="brand-text">Белая Ночь</span></a>
+			    	</div>
+				</div>
+
+				<div class="row navigate colapse navbar-collapse"
+				  id="bs-example-navbar-collapse-1"> 
+					<div class="col-sm-2 col-sm-offset-3 header-text nav-text">
+						<a href="http://whitenight.info/">Главная</a></div>
+					<div class="col-sm-2 header-text nav-text">
+						<a href="http://whitenight.info/item/">Список товаров</a>
+					</div>
+					<div class="col-sm-2 header-text nav-text"  style="
+					@media (min-width: 768px) {
+						border-bottom: 5px solid white;
+					}
+					">
+						<a href="http://whitenight.info/contacts.html">Контакты</a>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+
+	<div class="container-fluid all-content-bg">
+		<div class="container all-content">
+			<div class="row content"> -->
+				<!-- <div class="container"> -->
+{% extends 'base.html' %}
+
+{% block name_page %}
+<h2 id="title">Контакты</h2>
+{% endblock %}
+			
+<!-- CONTENT -->
+
+{% block content %}
+Сделать заказ или получить подробную информацию Вы можете по телефону 
+<span class="contacts-inline-data contants-our-phone"> +7 800 555 35 35</span><br>
+			<ul>
+				<li>По будням: с 9<sup>00</sup> до 20<sup>00</sup></li>
+				<li>По выходным: с 12<sup>00</sup> до 18<sup>00</sup></li>
+			</ul><br>
+
+			Также Вы можете заполнить форму обратной связи и мы обязательно перезвоним Вам в удобное для Вас время.
+		<div class="cont-fb-btn">
+			<div class="btn fb-btn">
+				<a href="#feedback" id="feedback" class="send popup">Обратная связь</a>
+			</div>
+		</div>
+			
+
+			<div class="our-adress" id="y-map">
+				<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;width=500&amp;height=314&amp;lang=ru_RU&amp;scroll=true"></script>
+			</div>
+
+{% endblock %}
+
+
+{% block hid %}
+
+	<!-- PopUp window -->
+			<div class="hidden" >
+				<form id="feedback" method="post">
+					
+					<input type="text" name="name" placeholder="Имя:" id="name" required><br>
+
+					
+					<input type="text" name="phone" placeholder="Телефон:" id="phone" required><br>
+					<p class="external_text">Когда Вам удобно принять звонок:</p>
+		<div class="input_set">
+					<div class="input_date">
+							<div class="input_text">
+								<p>Дата</p>
+							</div>
+						<select name="date" id="date" >
+							
+						</select>
+					</div>
+				
+					<div class="input_time">
+						<div class="input_text">
+							<p>Время</p>
+						</div>
+
+						<span class="white">c&nbsp</span>
+						<select name="time_from" id="time_from">
+							<option value="12:00" selected>12:00</option>
+							<option value="12:30">12:30</option>
+							<option value="13:00">13:00</option>
+							<option value="13:30">13:30</option>
+							<option value="14:00">14:00</option>
+							<option value="14:30">14:30</option>
+							<option value="15:00">15:00</option>
+							<option value="15:30">15:30</option>
+							<option value="16:00">16:00</option>
+							<option value="16:30">16:30</option>
+							<option value="17:00">17:00</option>
+							<option value="17:30">17:30</option>
+							<option value="18:00">18:00</option>
+							<option value="18:30">18:30</option>
+							<option value="19:00">19:00</option>
+							<option value="19:30">19:30</option>
+							<option value="20:00">20:00</option>
+						</select>
+					
+
+						<span class="white">&nbsp до&nbsp</span>
+						<select name="time_to" id="time_to">
+							<option value="12:00">12:00</option>
+							<option value="12:30">12:30</option>
+							<option value="13:00">13:00</option>
+							<option value="13:30">13:30</option>
+							<option value="14:00">14:00</option>
+							<option value="14:30">14:30</option>
+							<option value="15:00">15:00</option>
+							<option value="15:30">15:30</option>
+							<option value="16:00">16:00</option>
+							<option value="16:30">16:30</option>
+							<option value="17:00">17:00</option>
+							<option value="17:30">17:30</option>
+							<option value="18:00">18:00</option>
+							<option value="18:30">18:30</option>
+							<option value="19:00">19:00</option>
+							<option value="19:30">19:30</option>
+							<option value="20:00" selected="">20:00</option>
+						</select>
+					</div>
+			</div>
+					
+					<input type="hidden" name="id" value="" id="hidden_input">
+					<button class="send">Заказать звонок</button>
+				</form>
+			</div>
+	<!-- End PopUp -->
+{% endblock %}
+<!-- END CONTENT -->
+<!-- 			</div>
+		</div>	
+	</div> -->
+
+
+<!-- FOOTER -->
+<!-- <div class="footer-bg">
+	<div class="container" id="all-all-footer">
+		<div class="all-footer row" id="footer">
+			<a href="http://whitenight.info/">
+				<img src="http://whitenight.info/static/img/logo.png" id="footer-logo">
+			</a>
+			<div class="contacts">
+				<div class="contacts-data">
+					<ul>
+						<li>+78005553535</li>
+						<li>aleksedima@mail.ru</li>
+					</ul>
+				</div>
+
+				<div class="vk"> 
+					<a href="https://vk.com/white_night_chinchilla" id="a-vk" target="_blank"><span class="vk-text">Мы в Вк:</span>
+					<img src="http://www.catsburg.ru/netcat_files/Image/mezhdunarodny.png" id="logo-vk"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+-->
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://whitenight.info/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="http://whitenight.info/static/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot"></script>
+<script src="http://whitenight.info/static/js/jquery.magnific-popup.js"></script>
+<script src="http://whitenight.info/static/js/common.js"></script>
+<script>
+	$(function(){
+		var date = new Date();
+		var day = date.getDate();
+		var month = date.getMonth();
+		var year = date.getFullYear();
+		for (i = 0; i < 8; i++){
+			var foo = new Date(year, month, day + i+1);
+			var foo_day = foo.getDate();
+			var foo_month = foo.getMonth(); 
+
+			monthA = 'января,февраля,марта,апреля,мая,июня,июля,августа,сенября,октября,ноября,декабря'.split(',');
+
+			document.getElementById("date").options[i] = new Option(foo_day + ' ' + monthA[foo_month], foo_day + ' ' + monthA[foo_month]);
+
+		};
+		var width = document.body.clientWidth;
+		if (width < 300) {
+			document.getElementById("y-map").innerHTML = '<a href="https://yandex.ru/maps/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;source=constructorStatic" target="_blank"><img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;width=200&amp;height=185&amp;lang=ru_RU" alt="" style="border: 0;" /></a>';
+		} else if (width < 400) {
+			document.getElementById("y-map").innerHTML = '<a href="https://yandex.ru/maps/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;source=constructorStatic" target="_blank"><img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;width=240&amp;height=185&amp;lang=ru_RU" alt="" style="border: 0;" /></a>';
+		} else if (width < 615) {
+			document.getElementById("y-map").innerHTML = '<a href="https://yandex.ru/maps/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;source=constructorStatic" target="_blank"><img src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A226ba3969615f3d84e9e5d2da64eda05a54d6803f0d8ef94ca6441b9c8538d5e&amp;width=294&amp;height=185&amp;lang=ru_RU" alt="" style="border: 0;" /></a>'
+		 }; 
+
+
+
+
+
+
+});
+</script>
+<script src="http://whitenight.info/static/js/jquery.maskedinput.min.js"></script>
+<script>
+
+$(function(){
+  $("#phone").mask("8(999) 999-99-99");
+});
+</script>
+
+{% endblock %}
+<!-- </div>
+</body>
+</html> -->

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}
+	<title>Главная</title>
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+
+{% block name_page %}
+<h2>Главная</h2>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+	<div class="row advantage first-adv">
+		<div class="self-adv col-md-8 col-sm-11 col-xs-12">
+			<div class="left-img-adv img-adv">
+				<img src="{% static 'img/eco.jpg' %}">
+			</div>
+			<div class="right-text-adv text-adv">
+				При создании наших изделий используются исключительно экологически чистые материалы, безвредные для животных
+			</div>
+		</div>
+	</div>
+	<div class="row advantage second-adv">
+		<div class="self-adv col-md-8 col-md-offset-4 col-sm-11 col-sm-offset-1 col-xs-12">
+			<div class="right-img-adv img-adv">
+				<img src="{% static 'img/draft.jpg' %}">
+			</div>
+			<div class="left-text-adv text-adv">
+				У нас Вы можете заказать изделие по индивидуально разработанному дизайну
+			</div>
+		</div>
+	</div>
+	<div class="row advantage third-adv">
+		<div class="self-adv col-md-8 col-md-offset-1 col-sm-11 col-xs-12">
+			<div class="left-img-adv img-adv">
+				<img src="{% static 'img/discount.jpg' %}">
+			</div>
+			<div class="right-text-adv text-adv">
+				При заказе от 2 товаров мы с удовольствием предоставим Вам скидку
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot' %}"></script>
+{% endblock %}

@@ -1,0 +1,284 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+	{% block title %}
+		<title>{{ item.title }}</title>
+	{% endblock %}
+
+	{% block link %}
+		<link rel="stylesheet" href="{% static 'css/details.css' %}">
+		<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
+		<link rel="stylesheet" type="application/octet-stream" href="{% static 'css/bootstrap.css.map' %}">
+
+	{% endblock %}
+	
+
+
+
+	{% block content %}
+<img src="{{ item.img.url}}" alt="">
+<div class="row info-it">
+<!-- CONTENT -->
+	<h3>{{ item.title }}</h3>
+	<div class="gallery col-sm-6 col-xs-12">
+		<div class="main" id="main-div">	
+			<img src="{{ item.img1.url }}" id="main">
+		</div>
+		<div class="other">
+
+			<span class="other-img">
+				<a onclick="chImg('img1', '{{ item.img1.url }}');">
+					<img src="{{ item.img1.url }}" id="img1">
+				</a>
+			</span>
+			{% if item.img2 %}
+			<span class="other-img">
+			    <a onclick="chImg('img2', '{{ item.img2.url }}');">
+				<img src="{{ item.img2.url }}" id="img2">
+			    </a>
+			</span>
+			{% endif %}
+			{% if item.img3 %}
+			<span class="other-img">
+			    <a onclick="chImg('img3', '{{ item.img3.url }}');">
+				<img src="{{ item.img3.url }}" id="img3">
+			    </a>
+			</span>
+			{% endif %}
+			{% if item.img4 %}
+			<span class="other-img">
+			    <a onclick="chImg('img4', '{{ item.img4.url }}');">
+				<img src="{{ item.img4.url }}" id="img4">
+			    </a>
+			</span>
+			{% endif %}
+
+
+		</div>
+	</div>
+	<div class="right-info col-sm-6 col-xs-12">
+		<div class="table-info">
+			<table>
+				<tr>
+					<td>Размеры (см)</td>
+					<td>{{ item.size }}</td>
+				</tr>
+				<tr>
+					<td>Материал</td>
+					<td>{{ item.material }} </td>
+				</tr>
+				<tr>
+					<td>Вес (кг)</td>
+					<td>{{ item.weight }} </td>
+				</tr>
+				<tr>
+					<td>Цена (руб)</td>
+					<td>{{ item.price }} </td>
+				</tr>
+			</table>
+		</div>
+		<div class="description">
+			<p>
+				{{ item.description }}
+			</p>
+		</div>
+		<div class="btn-box">
+			<div class="btn buy">
+				<a href="#buy-item" class="popup" onClick="">Заказать</a>
+			</div>
+		</div>
+	</div>
+</div>		    
+
+
+	{% endblock %}
+
+	{% block hid %}
+	<!-- PopUp window -->
+<div class="hidden" >
+	<!-- <form id="buy-item" method="post" action="">
+		{% csrf_token %}
+		<input type="text" name="name" placeholder="Имя:" id="name" required><br>
+
+		
+		<input type="text" name="phone" placeholder="Телефон:" id="phone" required><br>
+		<p class="external_text">Когда Вам удобно принять звонок:</p>
+	<div class="input_set">
+		<div class="input_date">
+				<div class="input_text">
+					<p>Дата</p>
+				</div>
+			<select name="date" id="date" >
+				
+			</select>
+		</div>
+	
+		<div class="input_time">
+			<div class="input_text">
+				<p>Время</p>
+			</div>
+
+			<span class="white">c&nbsp</span>
+			<select name="time_from" id="time_from">
+				<option value="12:00" selected>12:00</option>
+				<option value="12:30">12:30</option>
+				<option value="13:00">13:00</option>
+				<option value="13:30">13:30</option>
+				<option value="14:00">14:00</option>
+				<option value="14:30">14:30</option>
+				<option value="15:00">15:00</option>
+				<option value="15:30">15:30</option>
+				<option value="16:00">16:00</option>
+				<option value="16:30">16:30</option>
+				<option value="17:00">17:00</option>
+				<option value="17:30">17:30</option>
+				<option value="18:00">18:00</option>
+				<option value="18:30">18:30</option>
+				<option value="19:00">19:00</option>
+				<option value="19:30">19:30</option>
+				<option value="20:00">20:00</option>
+			</select>&nbsp
+		
+		<span style="white-space: nowrap;">
+				<span class="white">до&nbsp</span>
+				<select name="time_to" id="time_to">
+					<option value="12:00">12:00</option>
+					<option value="12:30">12:30</option>
+					<option value="13:00">13:00</option>
+					<option value="13:30">13:30</option>
+					<option value="14:00">14:00</option>
+					<option value="14:30">14:30</option>
+					<option value="15:00">15:00</option>
+					<option value="15:30">15:30</option>
+					<option value="16:00">16:00</option>
+					<option value="16:30">16:30</option>
+					<option value="17:00">17:00</option>
+					<option value="17:30">17:30</option>
+					<option value="18:00">18:00</option>
+					<option value="18:30">18:30</option>
+					<option value="19:00">19:00</option>
+					<option value="19:30">19:30</option>
+					<option value="20:00" selected="">20:00</option>
+				</select>
+		</span>
+	</div>
+</div>
+		<p class="external_text">Подробности заявки:</p>
+		<textarea name="details" rows="6"></textarea>
+		<input type="hidden" name="id" value="" id="hidden_input">
+		<button class="send">Отправить заявку</button>
+	</form> -->
+	<form id="buy-item" method="post" action="">
+
+		{% csrf_token %}
+	
+
+		{{ form.name }}<br>
+
+		
+		{{ form.phone }}<br>
+		<p class="external_text">Когда Вам удобно принять звонок:</p>
+		<div class="input_set">
+			<div class="input_date">
+				<div class="input_text">
+					<p>Дата</p>
+				</div>
+				{{ form.date }}
+			</div>
+		
+			<div class="input_time">
+				<div class="input_text">
+					<p>Время</p>
+				</div>
+				<span class="white">c&nbsp</span>
+				{{ form.time_from }}
+			
+			<span style="white-space: nowrap;">
+				<span class="white">до&nbsp</span>
+				{{ form.time_to }}
+			</span>
+			</div>
+		</div>
+		<p class="external_text">Подробности заявки:</p>
+		{{ form.details }}
+<!-- 		<input type="hidden" name="id" value="{{ item.name }}" id="hidden_input">-->
+		{{ form.item_name }}
+		<input type="submit" class="send" value="Отправить заявку" />
+
+
+
+
+	</form>
+</div>
+	<!-- End PopUp -->	
+	{% endblock %}
+
+
+	{% block script %}
+<script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot' %}"></script>
+<script src="{% static 'js/jquery.maskedinput.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+
+<script type="text/javascript">
+		
+	var chImg = function (me, name) {
+		document.getElementById("main").src = name;
+
+		document.getElementById("img1").style.outline = "none";
+		document.getElementById("img2").style.outline = "none";
+		document.getElementById("img3").style.outline = "none";
+		document.getElementById("img4").style.outline = "none";
+		document.getElementById(me).style.outline = "2px solid #bce375";
+	};
+</script>
+<script type="text/javascript">
+	$(function(){
+		var width = document.body.clientWidth;
+		// alert(width);
+		if (width < 450) {
+			var w_gallery = width - (width / 100 * 30);
+			document.getElementById("main-div").style.height = w_gallery + "px";
+			document.getElementById("main").style.maxHeight = (w_gallery - 10) + "px";
+		};
+
+		$("#hidden_input").val('{{ item.title }}');
+
+	});
+</script>
+<script src="{% static 'js/jquery.maskedinput.min.js' %}"></script>
+<script>
+
+$(function(){
+  $("#phone").mask("8(999) 999-99-99");
+});
+</script>
+
+<script>
+	// $(function(){
+		// var date = new Date();
+		// var day = date.getDate();
+		// var month = date.getMonth();
+		// var year = date.getFullYear();
+		// for (i = 0; i < 8; i++){
+		// 	var foo = new Date(year, month, day + i+1);
+		// 	var foo_day = foo.getDate();
+		// 	var foo_month = foo.getMonth(); 
+
+		// 	monthA = 'января,февраля,марта,апреля,мая,июня,июля,августа,сенября,октября,ноября,декабря'.split(',');
+
+		// 	document.getElementById("date").options[i] = new Option(foo_day + ' ' + monthA[foo_month], foo_day + ' ' + monthA[foo_month]);
+
+
+
+			// date.setDate(date.getDate() + i);
+
+
+
+		// };
+
+	// });
+</script>
+	{% endblock %}
